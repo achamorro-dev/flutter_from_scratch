@@ -15,7 +15,9 @@ class _LoginOTPScreenState extends State<LoginOTPScreen> {
   Widget build(BuildContext context) {
 
     return LoginPage(
-      onPressedActionButton: () { },
+      onPressedActionButton: () {
+        Navigator.pushNamed(context, 'dashboard');
+      },
       firstPage: false,
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
