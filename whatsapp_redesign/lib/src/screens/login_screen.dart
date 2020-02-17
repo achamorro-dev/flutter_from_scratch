@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:whatsapp_redesign/src/pages/login_page.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -40,166 +41,85 @@ class _LoginScreenState extends State<LoginScreen> {
       )
     );
 
-    return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      body: Stack(
-        fit: StackFit.passthrough,
-        children: <Widget>[
-          Positioned(
-            top: -150,
-            child: Image(
-              image: AssetImage('assets/images/background.png'),
-              width: MediaQuery.of(context).size.width * 2,
-            ),
-          ),
-          Positioned(
-            top: 0,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.3,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Image(
-                    image: AssetImage('assets/images/logo.png'),
-                    height: 60,
-                  ),
-                  SizedBox(width: 8,),
-                  Text(
-                    'WhatsApp',
-                    style: GoogleFonts.poppins().copyWith(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white
-                    ),
-                  )
-                ],
+    return LoginPage(
+      onPressedActionButton: () {
+        Navigator.pushNamed(context, 'login_otp');
+      },
+      firstPage: true,
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Enter your mobile number to\nlogin or register',
+              style: GoogleFonts.poppins().copyWith(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
               ),
             ),
-          ),
-          Positioned(
-            bottom: MediaQuery.of(context).size.height * -0.3,
-            left: MediaQuery.of(context).size.width * -0.5,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width),
+            SizedBox(height: 40),
+            Text(
+              'Country',
+              style: GoogleFonts.poppins().copyWith(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).disabledColor
               ),
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width * 2,
-              padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.6,
-                vertical: 100
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Enter your mobile number to\nlogin or register',
-                    style: GoogleFonts.poppins().copyWith(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(height: 40),
-                  Text(
-                    'Country',
-                    style: GoogleFonts.poppins().copyWith(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Theme.of(context).disabledColor
-                    ),
-                  ),
-                  DropdownButton<String>(
-                    onChanged: (value) {
-                      setState(() {
-                        print(value);
-                        countryValue = value;
-                      });
-                    },
-                    items: countryItems.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    value: countryValue,
-                    style: textFieldStyle,
-                    isExpanded: true,
-                    iconEnabledColor: Theme.of(context).primaryColor,
-                    underline: Container(color:Theme.of(context).primaryColor, height: 1.0),
-                  ),
-                  SizedBox(height: 40),
-                  Text(
-                    'Your Mobile Number',
-                    style: GoogleFonts.poppins().copyWith(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Theme.of(context).disabledColor
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 40,
-                        child: TextField(
-                          style: textFieldStyle,
-                          decoration: textFieldDecoration,
-                          controller: TextEditingController(
-                            text: '+91'
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 30,),
-                      Expanded(  
-                        child: TextField(
-                          style: textFieldStyle,
-                          decoration: textFieldDecoration.copyWith(
-                            suffixIcon: Icon(Icons.check_circle, color: Color(0xFF25D366),)
-                          ),
-                          controller: TextEditingController(
-                            text: '77150 46761'
-                          ),
-                        ),
-                      )
-                    ]
-                  ),
-                  
-                ],
-              )
             ),
-          ),
-          Positioned(
-            left: 40,
-            bottom: 30,
-            child: Row(
+            DropdownButton<String>(
+              onChanged: (value) {
+                setState(() {
+                  countryValue = value;
+                });
+              },
+              items: countryItems.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              value: countryValue,
+              style: textFieldStyle,
+              isExpanded: true,
+              iconEnabledColor: Theme.of(context).primaryColor,
+              underline: Container(color:Theme.of(context).primaryColor, height: 1.0),
+            ),
+            SizedBox(height: 40),
+            Text(
+              'Your Mobile Number',
+              style: GoogleFonts.poppins().copyWith(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).disabledColor
+              ),
+            ),
+            Row(
               children: [
                 Container(
-                  color: Theme.of(context).primaryColor,
-                  width: 30,
-                  height: 2
+                  width: 40,
+                  child: TextField(
+                    style: textFieldStyle,
+                    decoration: textFieldDecoration,
+                    controller: TextEditingController(
+                      text: '+91'
+                    ),
+                  ),
                 ),
-                SizedBox(width: 10,),     
-                Container(
-                  color: Theme.of(context).disabledColor,
-                  width: 30,
-                  height: 2
+                SizedBox(width: 30,),
+                Expanded(  
+                  child: TextField(
+                    style: textFieldStyle,
+                    decoration: textFieldDecoration.copyWith(
+                      suffixIcon: Icon(Icons.check_circle, color: Color(0xFF25D366),)
+                    ),
+                    controller: TextEditingController(
+                      text: '77150 46761'
+                    ),
+                  ),
                 )
               ]
             ),
-          ),
-          Positioned( 
-            bottom: 30,
-            right: 30,
-            child: FloatingActionButton(
-              onPressed: () {},
-              backgroundColor: Theme.of(context).primaryColor,
-              child: Icon(Icons.chevron_right, size: 40,)
-            ),
-          )
-        ],
-      )
+          ],
+        )
     );
   }
 }

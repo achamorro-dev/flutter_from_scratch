@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_redesign/src/screens/login_otp_screen.dart';
 
 import 'package:whatsapp_redesign/src/screens/login_screen.dart';
 import 'package:whatsapp_redesign/src/themes/theme.dart';
@@ -12,7 +13,8 @@ class WhatsApp extends StatelessWidget {
       theme: lightTheme,
       debugShowCheckedModeBanner: false,
       routes: {
-        'login': (BuildContext context) => LoginScreen()
+        'login': (BuildContext context) => LoginScreen(),
+        'login_otp': (BuildContext context) => LoginOTPScreen()
       },
     );
   }
