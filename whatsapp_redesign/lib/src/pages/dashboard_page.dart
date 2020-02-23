@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:whatsapp_redesign/src/screens/chat_screen.dart';
@@ -56,7 +54,8 @@ class _DashboardPageState extends State<DashboardPage> {
             SizedBox(width: 10,),
           ],
           bottom: TabBar(
-            isScrollable: true,
+            isScrollable: false,
+            labelPadding: EdgeInsets.symmetric(horizontal: 10),
             labelColor: Theme.of(context).primaryColor,
             indicatorColor: Theme.of(context).primaryColor,
             unselectedLabelColor: Theme.of(context).disabledColor,

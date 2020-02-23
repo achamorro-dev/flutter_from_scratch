@@ -23,7 +23,7 @@ class UserAvatarWidget extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: 0,
+              bottom: constraints.maxHeight * 0.04,
               left: constraints.maxWidth * 0.45,
               child: Container(
                 width: 10,
