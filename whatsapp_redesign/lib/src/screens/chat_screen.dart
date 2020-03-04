@@ -24,7 +24,6 @@ class _ChatsScreenState extends State<ChatsScreen> {
   }
 
   _getUsers() async {
-    print('hola');
     users = await UsersProvider.getUsers();
     setState(() {
       isLoading = false;

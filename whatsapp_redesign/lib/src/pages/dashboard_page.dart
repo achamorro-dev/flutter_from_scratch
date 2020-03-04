@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:whatsapp_redesign/src/screens/chat_screen.dart';
-import 'package:whatsapp_redesign/src/screens/groups_screen.dart';
 import 'package:whatsapp_redesign/src/widgets/user_avatar_widget.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -24,9 +23,9 @@ class _DashboardPageState extends State<DashboardPage> {
   List<Widget> _tabItems = [
     ChatsScreen(),
     ChatsScreen(),
-    GroupsScreen(),
     ChatsScreen(),
-    GroupsScreen(),
+    ChatsScreen(),
+    ChatsScreen(),
   ];
 
   @override
